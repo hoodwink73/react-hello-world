@@ -1,32 +1,22 @@
 {
-  "name": "react-hot-boilerplate",
+  "name": "react-hello-world",
   "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "description": "A note application to get familiar with React",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-hot-boilerplate.git"
+    "url": "https://github.com/hwk73/react-hello-world.git"
   },
   "keywords": [
     "react",
     "reactjs",
-    "boilerplate",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack"
+    "helloworld"
   ],
-  "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gaearon/react-hot-boilerplate/issues"
-  },
-  "homepage": "https://github.com/gaearon/react-hot-boilerplate",
+  "private": true,
+  "author": "Arijit Bhattacharya <hoodwink73@live.com> (http://github.com/hwk73)",
   "devDependencies": {
     "babel-core": "^5.4.7",
     "babel-eslint": "^3.1.9",
