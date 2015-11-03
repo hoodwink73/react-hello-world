@@ -1,4 +1,5 @@
 import React from 'react';
-import App from './App';
+import comments from './data.js';
+import CommentBox from './CommentBox.js';
 
-React.render(<App />, document.getElementById('root'));
+React.render(<CommentBox comments={comments} />, document.getElementById('root'));

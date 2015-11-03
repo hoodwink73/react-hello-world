@@ -1,3 +1,26 @@
+Comment Box
+============
+
+This example puts the Comments Box [tutorial](https://facebook.github.io/react/docs/tutorial.html) on React's official website into this boilerplate.
+
+The code changes a little with this new setting which promotes use of ES6.
+
+We are using React 0.13 which promotes idiomatic JS and hence extends `Components` and creates new classes which are native to ES6 in lieu of `React.createClass`.
+
+I also dive in ES6 modules in this commit.
+
+Here we create a higher order Components
+
+`CommentBox`
+
+which includes
+
+-  `CommentList`
+    - `Comment`
+-  `CommentForm`
+
+I load two comments from  `src/data.js`. We pass the comments as **props** to `CommentBox` and it then passes it to `CommentList` and finally to `Comment`.
+
 react-hot-boilerplate
 =====================
 
