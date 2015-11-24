@@ -19,7 +19,13 @@ which includes
     - `Comment`
 -  `CommentForm`
 
-I load two comments from  `src/data.js`. We pass the comments as **props** to `CommentBox` and it then passes it to `CommentList` and finally to `Comment`.
+We have created used an express server along with Weppack server to respond to APIS.
+
+The data is stored in `comments.json`.
+
+Adding a comment from the app will add a comment in the json.
+
+And deleting a comment from the file will remove the comment from the app.
 
 react-hot-boilerplate
 =====================

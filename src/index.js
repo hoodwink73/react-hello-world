@@ -1,5 +1,5 @@
 import React from 'react';
-import comments from './data.js';
 import CommentBox from './CommentBox.js';
+import './style.css'
 
-React.render(<CommentBox comments={comments} />, document.getElementById('root'));
+React.render(<CommentBox url="/api/comments" pollInterval={2000} />, document.getElementById('root'));
