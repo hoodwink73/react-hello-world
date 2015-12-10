@@ -9,7 +9,6 @@ export default class CommenForm extends Component {
     };
   }
   handleAuthorChange(e) {
-    console.log(this, e.target.value, this.state.author)
     this.setState({
       author: e.target.value
     })

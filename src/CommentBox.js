@@ -1,55 +1,43 @@
 import React, { Component } from 'react';
-import * as $ from 'jquery';
+import Parse from 'parse';
+import ParseReact from 'parse-react';
 import CommentList from './CommentList.js';
 import CommentForm from './CommentForm.js';
 
+var ParseComponent = ParseReact.Component(React);
 
-export default class CommentBox extends Component {
+export default class CommentBox extends ParseComponent {
   constructor() {
     super();
-    this.state = {
-      comments: []
-    };
   }
-  loadCommentsFromServer() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: false,
-      success: function (comments) {
-        this.setState({comments: comments});
-      }.bind(this),
-      error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+
+  observe(props, state) {
+    return {
+      comments: (new Parse.Query('Comments')).ascending('createdAt')
+    }
   }
-  handleCommentSubmit(comment) {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      type: 'POST',
-      data: comment,
-      success: function (comments) {
-        this.setState({
-          comments: comments
-        });
-      }.bind(this),
-      error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+
+  addNewComment(comment) {
+    ParseReact.Mutation.Create('Comments', comment).dispatch();
   }
+
+  refreshComments() {
+    setInterval(function () {
+      this.refreshQueries('comments');
+      console.log('Hello');
+    }.bind(this), this.props.pollInterval);
+  }
+
   componentDidMount() {
-    this.loadCommentsFromServer();
-    setInterval(this.loadCommentsFromServer.bind(this), this.props.pollInterval);
+    this.refreshComments.call(this);
   }
+
   render() {
     return (
       <div className="commentBox">
         <h1>Comments</h1>
-        <CommentList comments={this.state.comments}/>
-        <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
+        <CommentList comments={this.data.comments}/>
+        <CommentForm onCommentSubmit={this.addNewComment}/>
       </div>
     );
   }
